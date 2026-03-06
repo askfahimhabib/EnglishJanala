@@ -64,9 +64,9 @@ const displayWordDetails = (word) => {
       </div>
       <div>
         <h2 class="font-bold font-bangla">সমার্থক শব্দগুলো</h2>
-        <span class="btn">${word.synonyms}</span>
-        <span class="btn">${word.}</span>
-        <span class="btn">${word.}</span>
+        <span class="btn"></span>
+        <span class="btn"></span>
+        <span class="btn"></span>
       </div>`;
     document.getElementById("word_modal").showModal();
 }
