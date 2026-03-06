@@ -3,7 +3,7 @@ const loadLessons = () => {
       .then((res) => res.json()) //promise of json
       .then((json) => displayLessons(json.data));
 };
-loadLessons()
+
 
 const removeActive = () => {
     const lessonButtons = document.querySelectorAll(".lesson-btn");
@@ -23,6 +23,52 @@ const loadLevelWord = (id) => {
           displayLevelWord(data.data);
       });
     
+}
+
+const loadWordDetail = async(id) => {
+    const url = `https://openapi.programming-hero.com/api/word/${id}`;
+    const res = await fetch(url);
+    const details = await res.json();
+    displayWordDetails(details.data)
+}
+
+// {
+//     "word": "Eager",
+//     "meaning": "আগ্রহী",
+//     "pronunciation": "ইগার",
+//     "level": 1,
+//     "sentence": "The kids were eager to open their gifts.",
+//     "points": 1,
+//     "partsOfSpeech": "adjective",
+//     "synonyms": [
+//         "enthusiastic",
+//         "excited",
+//         "keen"
+//     ],
+//     "id": 5
+// }
+
+const displayWordDetails = (word) => {
+    console.log(word)
+    const detailsBox = document.getElementById("details-container")
+    detailsBox.innerHTML = `<div>
+        <h2 class="text-2xl font-bold">${word.word} <i class="fa-solid fa-microphone-lines"></i> : <span class="font-bangla">${word.pronunciation}</span></h2>
+      </div>
+      <div>
+        <h2 class="font-bold">Meaning</h2>
+        <p class="font-bangla">${word.meaning}</p></p>
+      </div>
+      <div>
+        <h2 class="font-bold">Example</h2>
+        <p class="font-bangla">${word.sentence}</p>
+      </div>
+      <div>
+        <h2 class="font-bold font-bangla">সমার্থক শব্দগুলো</h2>
+        <span class="btn">${word.synonyms}</span>
+        <span class="btn">${word.}</span>
+        <span class="btn">${word.}</span>
+      </div>`;
+    document.getElementById("word_modal").showModal();
 }
 
 const displayLevelWord = (words) => {
@@ -45,9 +91,9 @@ const displayLevelWord = (words) => {
         <div class="bg-white text-center space-y-3 rounded-xl shadow-2xl p-8">
         <h2 class="font-bold text-2xl">${word.word ? word.word : "No Word Found!"}</h2>
         <p class="text-gray-500 font-semibold">Meaning / Pronunciation</p>
-        <div class="font-bangla font-bold">"${word.meaning ? word.meaning :"(অর্থ পাওয়া যায়নি)"} / ${word.pronunciation ? word.pronunciation : "(উচ্চারণ নেই)"}"</div>
+        <div class="font-bangla font-bold">"${word.meaning ? word.meaning : "(অর্থ পাওয়া যায়নি)"} / ${word.pronunciation ? word.pronunciation : "(উচ্চারণ নেই)"}"</div>
         <div class="flex justify-between items-center">
-          <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]"><i class="fa-solid fa-circle-info"></i></button>
+          <button onclick="loadWordDetail(${word.id})" class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]"><i class="fa-solid fa-circle-info"></i></button>
           <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]"><i class="fa-solid fa-volume-high"></i></button>   
         </div>
       </div>
@@ -74,3 +120,5 @@ const displayLessons = (lessons) => {
     }
         
 }
+
+loadLessons();
