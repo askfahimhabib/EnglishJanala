@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>EnglishJanala 🪟</h1>
+  <h1>🇬🇧 EnglishJanala 🪟</h1>
   <p>An interactive and user-friendly web interface designed to help users learn and practice English.</p>
 </div>
 
@@ -21,3 +21,14 @@
 - **CSS3** - For styling, layouts, and animations.
 - **JavaScript** - For adding interactivity and logic.
 
+## 🚀 Getting Started
+
+To get a local copy of this project up and running, follow these simple steps:
+
+### Prerequisites
+You don't need any complex setup. Just a modern web browser (like Chrome, Firefox, or Edge) and a code editor (like VS Code).
+
+### Installation
+1. Clone the repository to your local machine:
+   ```bash
+   git clone [https://github.com/askfahimhabib/EnglishJanala.git](https://github.com/askfahimhabib/EnglishJanala.git)
